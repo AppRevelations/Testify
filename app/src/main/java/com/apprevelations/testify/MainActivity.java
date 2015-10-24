@@ -25,12 +25,16 @@ public class MainActivity extends AppCompatActivity {
 
         Uri uri = MediaStore.Video.Media.EXTERNAL_CONTENT_URI;
         String[] projection = { MediaStore.Video.VideoColumns.DATA };
-        //Cursor c = context.getContentResolver().query(uri, projection, null, null, null);
+        Cursor c = getContentResolver().query(uri, projection, null, null, null);
         int vidsCount = 0;
         if (c != null) {
             vidsCount = c.getCount();
             while (c.moveToNext()) {
                 Log.d("VIDEO", c.getString(0));
+
+              //  Bitmap thumb = ThumbnailUtils.createVideoThumbnail(c.getString(0),
+               //         MediaStore.Images.Thumbnails.MINI_KIND);
+
             }
             c.close();
         }
